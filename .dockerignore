@@ -1,4 +1,15 @@
-.idea/
+Dockerfile
+.dockerignore
+.git
+.gitignore
+.idea
+*.md
+*.MD
+.venv
+venv
+*.yml
+*.yaml
+
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
