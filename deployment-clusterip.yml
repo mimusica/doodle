@@ -1,0 +1,71 @@
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: challenge
+  labels:
+    name: challenge
+
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: challenge-cluster-service
+  namespace: challenge
+  labels:
+    app: challenge
+spec:
+  type: ClusterIP
+  selector:
+    app: challenge
+  ports:
+    - protocol: TCP
+      port: 8080
+
+---
+kind: Ingress
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: challenge-ingress
+  namespace: challenge
+  annotations:
+     nginx.ingress.kubernetes.io/rewrite-target: /
+  labels:
+    app: challenge
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: hello.local
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: challenge-cluster-service
+            port:
+              number: 8080
+
+---
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: challenge-deployment
+  namespace: challenge
+  labels:
+    app: challenge
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: challenge
+  template:
+    metadata:
+      labels:
+        app: challenge
+    spec:
+      containers:
+      - name: challenge
+        image: challenge:latest
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 8080
