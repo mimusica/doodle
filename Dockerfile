@@ -9,5 +9,7 @@ RUN python3 -m pip install --no-cache-dir -r requirements.txt
 
 EXPOSE 8080
 
+USER 65534:65534
+
 ENTRYPOINT ["python3"]
 CMD [ "app.py" ]
