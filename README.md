@@ -20,7 +20,6 @@ docker build -t challenge:latest .
 ```
 
 ### pull the remote docker image
-#TODO: add github url
 ```bash
 docker pull ghcr.io/mimusica/doodle-challenge:latest
 ```
