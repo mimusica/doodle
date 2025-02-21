@@ -26,7 +26,7 @@ docker pull ghcr.io/mimusica/doodle-challenge:latest
 
 ### Test the application:
 ```bash
-for m in GET POST PUT DELETE CONNECT OPTIONS TRACE PATCH; do curl -X $m localhost:8080; done
+for m in GET POST PUT DELETE; do curl -X $m localhost:8080; done
 ```
 
 ## Kubernetes
@@ -53,5 +53,5 @@ e.g.:
 
 ### Test the application with minikube:
 ```bash
-for m in GET POST PUT DELETE CONNECT OPTIONS TRACE PATCH; do curl -X $m hello.local; done
+for m in GET POST PUT DELETE; do curl -X $m hello.local; done
 ```
