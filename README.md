@@ -10,7 +10,7 @@ python3 -m venv .venv
 ```
 ### Test the application on your local machine:
 ```bash
-for m in GET POST PUT DELETE CONNECT OPTIONS TRACE PATCH; do curl -X $m localhost:8080; done
+for m in GET POST PUT DELETE; do curl -X $m localhost:8080; done
 ```
 
 ## Docker:
